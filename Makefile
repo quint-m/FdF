@@ -1,5 +1,5 @@
 NAME	:= Game
-CFLAGS	:= -Wextra -Werror -Wunreachable-code -Ofast
+CFLAGS	:= -Wunreachable-code -Ofast
 LIBMLX	:= ./lib/MLX42
 LIBFT	:= ./lib/libft
 

@@ -6,7 +6,7 @@
 /*   By: qmennen <qmennen@student.codam.nl>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 12:05:19 by qmennen           #+#    #+#             */
-/*   Updated: 2025/01/16 14:25:38 by qmennen          ###   ########.fr       */
+/*   Updated: 2025/01/16 18:41:58 by qmennen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	lifecycle(void *param)
 	points[2] = (t_vec3){.x = 2, .y = 0, .z = 0};
 
 	points[3] = (t_vec3){.x = 0, .y = 1, .z = 0};
-	points[4] = (t_vec3){.x = 1, .y = 1, .z = 2};
+	points[4] = (t_vec3){.x = 1, .y = 1, .z = 3};
 	points[5] = (t_vec3){.x = 2, .y = 1, .z = 0};
 
 	points[6] = (t_vec3){.x = 0, .y = 2, .z = 0};

@@ -6,7 +6,7 @@
 /*   By: qmennen <qmennen@student.codam.nl>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 18:06:50 by qmennen           #+#    #+#             */
-/*   Updated: 2025/01/16 16:04:28 by qmennen          ###   ########.fr       */
+/*   Updated: 2025/01/16 17:28:50 by qmennen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int	main(void)
 	t_camera	*camera;
 	t_game_data	game_data;
 
+//	parse_map("./maps/test.map");
 	mlx = create_window(WIDTH, HEIGHT, "FdF");
 	screen = create_screen(WIDTH, HEIGHT, mlx);
 	camera = init_cam();

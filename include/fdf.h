@@ -6,7 +6,7 @@
 /*   By: qmennen <qmennen@student.codam.nl>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 18:52:52 by qmennen           #+#    #+#             */
-/*   Updated: 2025/01/16 16:03:40 by qmennen          ###   ########.fr       */
+/*   Updated: 2025/01/16 17:11:24 by qmennen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ typedef struct map
 {
 	int		width;
 	int		height;
-	t_vec3	*points;
+	t_vec3	***map;
 }	t_map;
 
 /*
@@ -82,6 +82,8 @@ mlx_t		*create_window(int width, int height, const char *title);
 mlx_image_t	*create_screen(int width, int height, mlx_t *window_h);
 void		mlx_exit(void);
 void		program_exit(const char *str);
+void		parse_map(const char *file);
+void		free_map(char ***map);
 /*
  * Camera
  */
