@@ -6,7 +6,7 @@
 /*   By: qmennen <qmennen@student.codam.nl>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 18:52:52 by qmennen           #+#    #+#             */
-/*   Updated: 2025/01/16 15:15:18 by qmennen          ###   ########.fr       */
+/*   Updated: 2025/01/16 15:45:08 by qmennen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct camera
 {
 	float	zoom_factor;
 	float	zoom;
+	t_vec2	offset;
 }	t_camera;
 
 typedef struct game_data
@@ -73,4 +74,5 @@ void		p_exit(void);
  * Camera
  */
 void	scroll_input(double xdelta, double ydelta, void *param);
+void	keyboard_input(mlx_key_data_t keydata, void *param);
 #endif

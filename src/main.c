@@ -6,7 +6,7 @@
 /*   By: qmennen <qmennen@student.codam.nl>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 18:06:50 by qmennen           #+#    #+#             */
-/*   Updated: 2025/01/16 15:16:19 by qmennen          ###   ########.fr       */
+/*   Updated: 2025/01/16 15:45:28 by qmennen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ static t_camera	*init_cam()
 	}
 	cam->zoom_factor = 10;
 	cam->zoom = 64;
+	cam->offset = (t_vec2){.x = 0, .y = 0};
 	return (cam);
 }
 
@@ -43,8 +44,10 @@ int	main(void)
 	game_data.camera = camera;
 	mlx_loop_hook(mlx, lifecycle, &game_data);
 	mlx_scroll_hook(mlx, scroll_input, &game_data);
+	mlx_key_hook(mlx, keyboard_input, &game_data);
 	mlx_loop(mlx);
 	mlx_delete_image(mlx, screen);
 	mlx_terminate(mlx);
+	free(camera);
 	return (0);
 }
