@@ -6,7 +6,7 @@
 /*   By: qmennen <qmennen@student.codam.nl>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 18:47:51 by qmennen           #+#    #+#             */
-/*   Updated: 2025/01/15 21:39:32 by qmennen          ###   ########.fr       */
+/*   Updated: 2025/01/16 16:04:46 by qmennen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,6 @@ mlx_t	*create_window(int width, int height, const char *title)
 	mlx_set_setting(MLX_MAXIMIZED, false);
 	window_handle = mlx_init(width, height, title, false);
 	if (!window_handle)
-		p_exit();
+		mlx_exit();
 	return (window_handle);
 }

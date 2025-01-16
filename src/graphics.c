@@ -6,7 +6,7 @@
 /*   By: qmennen <qmennen@student.codam.nl>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 19:19:09 by qmennen           #+#    #+#             */
-/*   Updated: 2025/01/16 15:47:06 by qmennen          ###   ########.fr       */
+/*   Updated: 2025/01/16 16:04:53 by qmennen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,6 @@ mlx_image_t	*create_screen(int width, int height, mlx_t *window_h)
 
 	screen = mlx_new_image(window_h, width, height);
 	if (!screen || (mlx_image_to_window(window_h, screen, 0, 0) < 0))
-		p_exit();
+		mlx_exit();
 	return (screen);
 }

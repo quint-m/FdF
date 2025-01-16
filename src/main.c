@@ -6,7 +6,7 @@
 /*   By: qmennen <qmennen@student.codam.nl>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 18:06:50 by qmennen           #+#    #+#             */
-/*   Updated: 2025/01/16 15:45:28 by qmennen          ###   ########.fr       */
+/*   Updated: 2025/01/16 16:04:28 by qmennen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,7 @@ static t_camera	*init_cam()
 
 	cam = malloc(sizeof(t_camera));
 	if (!cam)
-	{
-		ft_printf("Failed to initialize camera\n");
-		exit(1);
-	}
+		program_exit("Failed to initialize camera\n");
 	cam->zoom_factor = 10;
 	cam->zoom = 64;
 	cam->offset = (t_vec2){.x = 0, .y = 0};

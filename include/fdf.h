@@ -6,7 +6,7 @@
 /*   By: qmennen <qmennen@student.codam.nl>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 18:52:52 by qmennen           #+#    #+#             */
-/*   Updated: 2025/01/16 15:45:08 by qmennen          ###   ########.fr       */
+/*   Updated: 2025/01/16 16:03:40 by qmennen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,10 @@
 # include <math.h>
 # include <stdlib.h>
 # include "libft.h"
+# include <fcntl.h>
+# include <stdio.h>
+# include <string.h>
+# include <errno.h>
 
 typedef struct vec2
 {
@@ -27,9 +31,9 @@ typedef struct vec2
 
 typedef struct vec3
 {
-	float x;
-	float y;
-	float z;
+	float	x;
+	float	y;
+	float	z;
 }	t_vec3;
 
 typedef struct camera
@@ -46,6 +50,13 @@ typedef struct game_data
 	t_camera	*camera;
 }	t_game_data;
 
+typedef struct map
+{
+	int		width;
+	int		height;
+	t_vec3	*points;
+}	t_map;
+
 /*
  * Game
  */
@@ -60,19 +71,20 @@ void		isometric(t_vec3 *point);
 /*
  * Wu line
  */
-void	draw_wu_line(mlx_image_t *screen, t_vec2 *p0, t_vec2 *p1);
-float	rfpart(float x);
-float	fpart(float x);
-int		ipart(float x);
+void		draw_wu_line(mlx_image_t *screen, t_vec2 *p0, t_vec2 *p1);
+float		rfpart(float x);
+float		fpart(float x);
+int			ipart(float x);
 /*
  * Helpers
  */
 mlx_t		*create_window(int width, int height, const char *title);
 mlx_image_t	*create_screen(int width, int height, mlx_t *window_h);
-void		p_exit(void);
+void		mlx_exit(void);
+void		program_exit(const char *str);
 /*
  * Camera
  */
-void	scroll_input(double xdelta, double ydelta, void *param);
-void	keyboard_input(mlx_key_data_t keydata, void *param);
+void		scroll_input(double xdelta, double ydelta, void *param);
+void		keyboard_input(mlx_key_data_t keydata, void *param);
 #endif
