@@ -6,7 +6,7 @@
 /*   By: qmennen <qmennen@student.codam.nl>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 18:52:52 by qmennen           #+#    #+#             */
-/*   Updated: 2025/01/15 21:40:19 by qmennen          ###   ########.fr       */
+/*   Updated: 2025/01/16 14:45:02 by qmennen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,42 @@ typedef struct vec2
 	float	y;
 }	t_vec2;
 
+typedef struct vec3
+{
+	float x;
+	float y;
+	float z;
+}	t_vec3;
+
+typedef struct game_data
+{
+	mlx_t		*mlx;
+	mlx_image_t	*screen;
+	float		zoom;
+}	t_game_data;
+
+/*
+ * Game
+ */
+void		lifecycle(void *param);
+/*
+ * Graphics
+ */
+void		render_model(t_game_data *game_data, t_vec3 *points);
 int			pixel_color(int r, int g, int b, int a);
 void		draw_line(mlx_image_t *screen, t_vec2 *p0, t_vec2 *p1);
-void		draw_wu_line(mlx_image_t *screen, t_vec2 *p0, t_vec2 *p1);
-mlx_t		*create_window(int width, int height, const char *title);
-mlx_image_t	*create_screen(int width, int height, mlx_t *window_h);
-void		p_exit(void);
-/**
-	*
-	*/
-
+void		isometric(t_vec3 *point);
+/*
+ * Wu line
+ */
+void	draw_wu_line(mlx_image_t *screen, t_vec2 *p0, t_vec2 *p1);
 float	rfpart(float x);
 float	fpart(float x);
 int		ipart(float x);
+/*
+ * Helpers
+ */
+mlx_t		*create_window(int width, int height, const char *title);
+mlx_image_t	*create_screen(int width, int height, mlx_t *window_h);
+void		p_exit(void);
 #endif

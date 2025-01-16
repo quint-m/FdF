@@ -1,24 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   window.c                                           :+:      :+:    :+:   */
+/*   graphics_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qmennen <qmennen@student.codam.nl>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/15 18:47:51 by qmennen           #+#    #+#             */
-/*   Updated: 2025/01/15 21:39:32 by qmennen          ###   ########.fr       */
+/*   Created: 2025/01/16 14:44:06 by qmennen           #+#    #+#             */
+/*   Updated: 2025/01/16 14:46:21 by qmennen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-mlx_t	*create_window(int width, int height, const char *title)
+int			pixel_color(int r, int g, int b, int a)
 {
-	mlx_t	*window_handle;
+	return (r << 24 | g << 16 | b << 8 | a);
+}
 
-	mlx_set_setting(MLX_MAXIMIZED, false);
-	window_handle = mlx_init(width, height, title, false);
-	if (!window_handle)
-		p_exit();
-	return (window_handle);
+void		isometric(t_vec3 *point)
+{
+	float	tmp;
+
+    tmp = point->x;
+    point->x = (tmp - point->y) * cos(0.523599);
+    point->y = (tmp + point->y) * sin(0.523599) - point->z;
 }
