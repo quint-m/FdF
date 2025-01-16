@@ -6,7 +6,7 @@
 /*   By: qmennen <qmennen@student.codam.nl>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/15 18:52:52 by qmennen           #+#    #+#             */
-/*   Updated: 2025/01/16 14:45:02 by qmennen          ###   ########.fr       */
+/*   Updated: 2025/01/16 15:15:18 by qmennen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,17 @@ typedef struct vec3
 	float z;
 }	t_vec3;
 
+typedef struct camera
+{
+	float	zoom_factor;
+	float	zoom;
+}	t_camera;
+
 typedef struct game_data
 {
 	mlx_t		*mlx;
 	mlx_image_t	*screen;
-	float		zoom;
+	t_camera	*camera;
 }	t_game_data;
 
 /*
@@ -63,4 +69,8 @@ int		ipart(float x);
 mlx_t		*create_window(int width, int height, const char *title);
 mlx_image_t	*create_screen(int width, int height, mlx_t *window_h);
 void		p_exit(void);
+/*
+ * Camera
+ */
+void	scroll_input(double xdelta, double ydelta, void *param);
 #endif
