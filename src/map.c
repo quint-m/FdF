@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "fdf.h"
+#include <fcntl.h>
 
 void	free_map(char ***map)
 {
@@ -28,50 +29,29 @@ void	free_map(char ***map)
 	free(map);
 }
 
-static void	create_map(char ***map, int h)
+t_map	parse_map(const char *file)
 {
-	int	w;
-	int	**res;
-
-	w = 0;
-	h = 0;
-	res = ft_calloc(h, sizeof(int *));
-	while (map[h])
-	{
-		while (map[h][w])
-		{
-			res[h][w] = ft_atoi(map[h][w]);
-			w++;
-		}
-		h++;
-	}
-	free_map(map);
-}
-
-static void	parse_lines(int fd)
-{
-	int		h;
-	char	*line;
-	char	***map;
-
-	map = ft_calloc(100, sizeof(char **));
-	while ((line = get_next_line(fd)))
-	{
-		map[h++] = ft_split(line, ' ');
-		free(line);
-	}
-	create_map(map, h);
-}
-
-void	parse_map(const char *file)
-{
-	int		height;
-	int		width;
-	int		fd;
+	t_vec3		**points_parsed;
+	char		*line;
+	int			row;
+	int			width;
+	int			fd;
 
 	fd = open(file, O_RDONLY);
 	if (fd < 0)
-		program_exit("FD is invalid");
-	parse_lines(fd);
+		program_exit("Failed opening map file");
+	points_parsed = create_vertices(3);
+	if (!points_parsed)
+		program_exit("failed to create vertices array\n");
+	row = 0;
+	while ((line = get_next_line(fd)))
+	{
+		width = process_line(&points_parsed, ft_split(line, ' '), row);
+		free(line);
+		row++;
+	}
+	if ((row * width) - 1 != vertex_count(points_parsed))
+		points_parsed = shrink(points_parsed, vertex_count(points_parsed) - (row * width));
 	close(fd);
+	return ((t_map) {.width = width, .height = row, .map = points_parsed});
 }

@@ -20,8 +20,8 @@ static t_camera	*init_cam()
 	cam = malloc(sizeof(t_camera));
 	if (!cam)
 		program_exit("Failed to initialize camera\n");
-	cam->zoom_factor = 10;
-	cam->zoom = 64;
+	cam->zoom_factor = 1;
+	cam->zoom = 1;
 	cam->offset = (t_vec2){.x = 0, .y = 0};
 	return (cam);
 }
@@ -32,8 +32,6 @@ int	main(void)
 	mlx_image_t	*screen;
 	t_camera	*camera;
 	t_game_data	game_data;
-
-//	parse_map("./maps/test.map");
 	mlx = create_window(WIDTH, HEIGHT, "FdF");
 	screen = create_screen(WIDTH, HEIGHT, mlx);
 	camera = init_cam();

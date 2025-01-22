@@ -33,11 +33,11 @@ void	keyboard_input(mlx_key_data_t keydata, void *param)
 	game_data = (t_game_data *)param;
 	speed = 10;
 	if (keydata.key == MLX_KEY_W)
-		game_data->camera->offset.y -= 1 * speed;
-	else if (keydata.key == MLX_KEY_S)
 		game_data->camera->offset.y += 1 * speed;
+	else if (keydata.key == MLX_KEY_S)
+		game_data->camera->offset.y -= 1 * speed;
 	else if (keydata.key == MLX_KEY_A)
-		game_data->camera->offset.x -= 1 * speed;
-	else if (keydata.key == MLX_KEY_D)
 		game_data->camera->offset.x += 1 * speed;
+	else if (keydata.key == MLX_KEY_D)
+		game_data->camera->offset.x -= 1 * speed;
 }

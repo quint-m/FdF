@@ -27,21 +27,11 @@ void	clear_screen(mlx_image_t *image)
 void	lifecycle(void *param)
 {
 	t_game_data	*game_data;
-	t_vec3		points[16];
+	t_map		map;
 
+	map = parse_map("./maps/test.map");
 	game_data = (t_game_data *)param;
-
-	points[0] = (t_vec3){.x = 0, .y = 0, .z = 0};
-	points[1] = (t_vec3){.x = 1, .y = 0, .z = 0};
-	points[2] = (t_vec3){.x = 2, .y = 0, .z = 0};
-
-	points[3] = (t_vec3){.x = 0, .y = 1, .z = 0};
-	points[4] = (t_vec3){.x = 1, .y = 1, .z = 3};
-	points[5] = (t_vec3){.x = 2, .y = 1, .z = 0};
-
-	points[6] = (t_vec3){.x = 0, .y = 2, .z = 0};
-	points[7] = (t_vec3){.x = 1, .y = 2, .z = 0};
-	points[8] = (t_vec3){.x = 2, .y = 2, .z = 0};
+	game_data->map = &map;
 	clear_screen(game_data->screen);
-	render_model(game_data, points);
+	render_model(game_data, game_data->map);
 }

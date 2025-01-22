@@ -43,19 +43,20 @@ typedef struct camera
 	t_vec2	offset;
 }	t_camera;
 
+typedef struct map
+{
+	int		width;
+	int		height;
+	t_vec3	**map;
+}	t_map;
+
 typedef struct game_data
 {
 	mlx_t		*mlx;
 	mlx_image_t	*screen;
 	t_camera	*camera;
+	t_map		*map;
 }	t_game_data;
-
-typedef struct map
-{
-	int		width;
-	int		height;
-	t_vec3	***map;
-}	t_map;
 
 /*
  * Game
@@ -64,7 +65,7 @@ void		lifecycle(void *param);
 /*
  * Graphics
  */
-void		render_model(t_game_data *game_data, t_vec3 *points);
+void		render_model(t_game_data *game_data, t_map *map);
 int			pixel_color(int r, int g, int b, int a);
 void		draw_line(mlx_image_t *screen, t_vec2 *p0, t_vec2 *p1);
 void		isometric(t_vec3 *point);
@@ -82,8 +83,13 @@ mlx_t		*create_window(int width, int height, const char *title);
 mlx_image_t	*create_screen(int width, int height, mlx_t *window_h);
 void		mlx_exit(void);
 void		program_exit(const char *str);
-void		parse_map(const char *file);
+t_map		parse_map(const char *file);
 void		free_map(char ***map);
+t_vec3		**create_vertices(int initial_size);
+int 		process_line(t_vec3 ***vertices, char **line, int row);
+size_t		vertex_count(t_vec3 **vertices);
+t_vec3		**resize(t_vec3 **src, int n);
+t_vec3		**shrink(t_vec3 **src, int n);
 /*
  * Camera
  */

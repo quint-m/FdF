@@ -40,7 +40,7 @@ static void	determine_points(t_vec2 *p0, t_vec2 *p1)
 
 static void	put_pixel(mlx_image_t *screen, int x, int y, float brightness)
 {
-	mlx_put_pixel(screen, x, y, pixel_color(255, 255, 255, 255 * brightness));
+	mlx_put_pixel(screen, x, y, pixel_color(255, 255 / (255 * y), 255, 255 * brightness));
 }
 
 static void	put_endpoint(mlx_image_t *screen, t_vec2 *point, float gradient, int steep)
