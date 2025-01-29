@@ -1,0 +1,7 @@
+[
+	{
+		"directory": "/path/to/project",
+		"command": "cc -I ./include/ -I ./lib/libft/include/ -I ./lib/MLX42/include/ -o main main.c",
+		"file": "/path/to/project/main.c"
+	}
+]

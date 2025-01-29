@@ -1,37 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   game.c                                             :+:      :+:    :+:   */
+/*   wu_util.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qmennen <qmennen@student.codam.nl>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/16 12:05:19 by qmennen           #+#    #+#             */
-/*   Updated: 2025/01/16 18:41:58 by qmennen          ###   ########.fr       */
+/*   Created: 2025/01/28 15:16:25 by qmennen           #+#    #+#             */
+/*   Updated: 2025/01/28 15:17:42 by qmennen          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	clear_screen(mlx_image_t *image)
+void	ft_swap(int *a, int *b)
 {
-	unsigned int	i;
+	int	tmp;
 
-	i = 0;
-	while (i < image->width * image->height)
-	{
-		mlx_put_pixel(image, i % image->width, i / image->width, 0x000000ff);
-		i++;
-	}
+	tmp = *a;
+	*a = *b;
+	*b = tmp;
 }
 
-void	lifecycle(void *param)
-{
-	t_game_data	*game_data;
-	t_map		map;
 
-	map = parse_map("./maps/test.map");
-	game_data = (t_game_data *)param;
-	game_data->map = &map;
-	clear_screen(game_data->screen);
-	render_model(game_data, game_data->map);
+int	ft_ipart(float n)
+{
+	return ((int) n);
+}
+
+float	ft_fpart(float n)
+{
+	if (n > 0.f)
+		return (n - ft_ipart(n));
+	return (n - (ft_ipart(n) + 1.f));
+}
+
+float	ft_rfpart(float n)
+{
+	return (1.0f - ft_fpart(n));
 }

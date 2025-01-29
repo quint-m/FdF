@@ -81,6 +81,7 @@ SOURCES	=	ft_atoi.c					\
 			ft_lstclear.c				\
 			ft_lstiter.c				\
 			ft_lstmap.c					\
+			ft_atoi_base.c				\
 			$(PRINT_F)					\
 			$(GET_NEXT_LINE)
 
@@ -93,10 +94,7 @@ $(OBJ_DIR):
 	mkdir -p $@
 
 $(OBJ_DIR)/%.o: %.c | $(OBJ_DIR)
-	@echo "$(YELLOW)⏳ Compiling $<...$(RESET)"
-	$(CC) $(CFLAGS) -I $(INC_DIR) -c $< -o $@
-	@echo "$(GREEN)✅ $< compiled!$(RESET)"
-
+	@$(CC) $(CFLAGS) -I $(INC_DIR) -c $< -o $@ && printf "$(GREEN)Compiling: $(notdir $<)\n$(RESET)"
 all: $(NAME)
 	@echo "$(GREEN)✅ Building all targets...$(RESET)"
 

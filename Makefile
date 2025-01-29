@@ -1,5 +1,6 @@
-NAME	:= Game
+NAME	:= fdf
 CFLAGS	:= -Wunreachable-code -Ofast
+CC		:= cc
 LIBMLX	:= ./lib/MLX42
 LIBFT	:= ./lib/libft
 
@@ -23,10 +24,12 @@ $(NAME): $(OBJS)
 	@$(CC) $(OBJS) $(LIBS) $(HEADERS) -o $(NAME)
 
 clean:
-	@rm $(OBJS)
+	@rm -f $(OBJS)
 	@make -C $(LIBMLX)/build clean
+	@make -C $(LIBFT) clean
 
 fclean: clean
-	@rm $(NAME)
+	@rm -f $(NAME)
+	@make -C $(LIBFT) fclean
 
 re: fclean all
